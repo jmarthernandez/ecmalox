@@ -1,2 +1,4 @@
 # ecmalox
-Lox implemented in Javascript
+Lox implemented in TypeScript
+
+https://craftinginterpreters.com/

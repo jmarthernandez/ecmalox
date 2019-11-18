@@ -68,9 +68,9 @@ keywords.set("while", TokenType.WHILE);
 
 export class Token {
   type: TokenType;
-  lexeme: String;
+  lexeme: string;
   literal: Object;
-  line: Number;
+  line: number;
 
   constructor(type: TokenType, lexeme: string, literal: any, line: number) {
     this.type = type;

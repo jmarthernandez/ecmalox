@@ -8,7 +8,8 @@
     "test": "jest --watch",
     "watch": "tsc -w",
     "start": "ts-node index.ts",
-    "generate": "ts-node generateAst.ts"
+    "generate": "ts-node generateAst.ts",
+    "scratch": "ts-node scratch.ts"
   },
   "repository": {
     "type": "git",

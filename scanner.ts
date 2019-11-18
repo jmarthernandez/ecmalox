@@ -1,9 +1,8 @@
-import { Token, TokenType } from "./token";
+import { Token, TokenType, keywords } from "./token";
 import { Lox } from "./index";
-let a = 0;
+
 export class Scanner {
   readonly source: string;
-  readonly keywords: Map<string, TokenType>;
   tokens: Token[];
   start: number;
   current: number;
@@ -15,25 +14,6 @@ export class Scanner {
     this.start = 0;
     this.current = 0;
     this.line = 1;
-
-    // RESERVED KEYWORDS
-    this.keywords = new Map<string, TokenType>();
-    this.keywords.set("and", TokenType.AND);
-    this.keywords.set("class", TokenType.CLASS);
-    this.keywords.set("else", TokenType.ELSE);
-    this.keywords.set("false", TokenType.FALSE);
-    this.keywords.set("for", TokenType.FOR);
-    this.keywords.set("fun", TokenType.FUN);
-    this.keywords.set("if", TokenType.IF);
-    this.keywords.set("nil", TokenType.NIL);
-    this.keywords.set("or", TokenType.OR);
-    this.keywords.set("print", TokenType.PRINT);
-    this.keywords.set("return", TokenType.RETURN);
-    this.keywords.set("super", TokenType.SUPER);
-    this.keywords.set("this", TokenType.THIS);
-    this.keywords.set("true", TokenType.TRUE);
-    this.keywords.set("var", TokenType.VAR);
-    this.keywords.set("while", TokenType.WHILE);
   }
 
   private isAtEnd() {
@@ -134,11 +114,10 @@ export class Scanner {
 
   private identifier() {
     while (this.isAlphaNumberic(this.peek())) {
-      console.log(a++);
       this.advance();
     }
     const text = this.source.substring(this.start, this.current);
-    let type = this.keywords.get(text);
+    let type = keywords.get(text);
 
     this.addToken(type || TokenType.IDENTIFIER, text);
   }
